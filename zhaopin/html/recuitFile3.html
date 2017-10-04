@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>recuitFile</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/dataTable.css" media="screen">
+<!-- jQuery (necessary JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+ <link href="css/dashboard.css" rel="stylesheet">
+<link href="css/style2.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<!--start-smoth-scrolling-->
+
+
+<!-- start menu -->
+  
+</head>
+<body>
+	<div class="header" id="home">
+			<div class="container">
+				<div class="head">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="navigation">
+					 <span class="menu"></span> 
+						<ul class="navig">
+							<li><a href="index.html"  class="hvr-bounce-to-bottom">Home</a></li>
+							<li><a href="recuitFile.html" class="active hvr-bounce-to-bottom">招聘者个人信息</a></li>
+							<li><a href="#" class="hvr-bounce-to-bottom">#</a></li>
+							<li><a href="#" class="hvr-bounce-to-bottom">#</a></li>
+							<li><a href="contact.html" class="hvr-bounce-to-bottom">contact</a></li>
+						</ul>
+				</div>
+					<div class="clearfix"></div>
+				</div>
+				</div>
+	</div>	
+		   <script>
+				$("span.menu").click(function(){
+					$(" ul.navig").slideToggle("slow" , function(){
+					});
+				});
+			</script>
+	<h1>发布信息列表</h1>		
+	<table border="3" cellspacing="3" cellpadding="3" class="dataTable">
+	  <thead>
+		<tr>
+		  <th class="dataTableHeader"></th>
+		  <th class="dataTableHeader" style="white-space: nowrap">发布人</th>
+		  <th class="dataTableHeader" style="white-space: nowrap">发布职位</th>
+		  <th class="dataTableHeader" style="white-space: nowrap">发布日期</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr class="odd_row">
+		  <td><input type="checkbox" id="checkme1" /></td>
+		  <td>张三</td>
+		  <td style="white-space: nowrap">程序员</td>
+		  <td style="white-space: nowrap">02/15/2008 15:23</td>
+		  
+		</tr>
+		<tr class="even_row">
+		  <td><input type="checkbox" id="checkme1" /></td>
+		  <td>张三</td>
+		  <td style="white-space: nowrap">
+		    程序员</td>
+		  <td style="white-space: nowrap">02/15/2008 15:23</td>
+		</tr>
+		<tr class="odd_row">
+		  <td><input type="checkbox" id="checkme1" /></td>
+		  <td>张三</td>
+		  <td style="white-space: nowrap">
+		     程序员</td>
+		  <td style="white-space: nowrap">02/15/2008 15:23</td>
+		</tr>
+		<tr class="even_row">
+		  <td><input type="checkbox" id="checkme1" /></td>
+		  <td>张三</td>
+		  <td style="white-space: nowrap">
+		    程序员</td>
+		  <td style="white-space: nowrap">02/15/2008 15:23</td>
+		</tr>
+		</tr>
+		
+		<tr class="odd_row">
+		  <<td><input type="checkbox" id="checkme1" /></td>
+		  <td>张三</td>
+		  <td style="white-space: nowrap">
+		    程序员</td>
+		  <td style="white-space: nowrap">02/15/2008 15:23</td>
+		</tr>
+	  </tbody>
+    </table>
+
+
+
+
+
+
+
+</body>
+</html>

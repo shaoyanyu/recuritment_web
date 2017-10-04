@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HomePage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script src="js/jquery.min.js"></script>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<SCRIPT type="text/javascript">
+function selectTag(showContent,selfObj){
+	// 操作标签
+	var tag = document.getElementById("tags").getElementsByTagName("li");
+	var taglength = tag.length;
+	for(i=0; i<taglength; i++){
+		tag[i].className = "";
+	}
+	selfObj.parentNode.className = "selectTag";
+	// 操作内容
+	for(i=0; j=document.getElementById("tagContent"+i); i++){
+		j.style.display = "none";
+	}
+	document.getElementById(showContent).style.display = "block";
+	
+	
+}
+</SCRIPT>
+			
+	
+<!--start-smoth-scrolling-->
+</head>
+<body>
+	<!--start-header-->
+	<div class="header" id="home">
+		<div class="container">
+			<div class="head">
+			<div class="logo">
+				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+			</div>
+			<div class="navigation">
+				 <span class="menu"></span> 
+					<ul class="navig">
+						<li><a href="index.html"  class="active hvr-bounce-to-bottom">Home</a></li>
+						<li><a href="profile.html" class="hvr-bounce-to-bottom">个人信息</a></li>
+						<li><a href="#" class="hvr-bounce-to-bottom">#</a></li>
+						<li><a href="#" class="hvr-bounce-to-bottom">#</a></li>
+						<li><a href="contact.html" class="hvr-bounce-to-bottom">CONTACT</a></li>
+					</ul>
+			</div>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+		</div>	
+	<!-- script-for-menu -->
+	<!-- script-for-menu -->
+		<script>
+			$("span.menu").click(function(){
+				$(" ul.navig").slideToggle("slow" , function(){
+				});
+			});
+		</script>
+	<!-- script-for-menu -->
+	<!--start-banner-->
+	<div class="banner">
+		<div class="container">
+		<div id = con>
+		<UL id=tags>
+			<LI ><A onClick="selectTag('tagContent0',this)" 
+		  href="javascript:void(0)">用户注册</A> </LI>
+			<LI class=selectTag><A onClick="selectTag('tagContent1',this)" 
+		  href="javascript:void(0)">用户登录</A> </LI>
+        </UL>
+		<DIV id=tagContent>
+		<DIV class=tagContent  id=tagContent0>
+			<div class="banner-top">
+				<div class="banner-bottom">
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>账号</p>
+						</div>
+						<div class="bnr-right">
+							<input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>姓名</p>
+						</div>
+						<div class="bnr-right">
+						    <input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>密码</p>
+						</div>
+						<div class="bnr-right">
+						     <input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>身份</p>
+						</div>
+						<div class="bnr-right">
+							<select>
+								<option value="student">学生</option>
+								<option value="teacher">老师</option>
+								<option value="teacher">商家</option>
+							</select>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-btn">
+						<form>
+							<input type="submit" value="注册">
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+			 <DIV class="tagContent selectTag" id=tagContent1>
+			 <div class="banner-top">
+				<div class="banner-bottom">
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>账号</p>
+						</div>
+						<div class="bnr-right">
+							<input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>姓名</p>
+						</div>
+						<div class="bnr-right">
+						    <input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>密码</p>
+						</div>
+						<div class="bnr-right">
+						     <input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-one">
+						<div class="bnr-left">
+							<p>身份</p>
+						</div>
+						<div class="bnr-right">
+							<select>
+								<option value="student">学生</option>
+								<option value="teacher">老师</option>
+								<option value="teacher">商家</option>
+							</select>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="bnr-btn">
+						<form>
+							<input type="submit" value="登录">
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+			 
+			 
+			 </div>
+			 </div>
+			
+		</div>
+	</div>
+	<!--end-banner-->
+	<!--start-footer-->
+	<div class="footer">
+		<div class="container">
+		<div class="touch-top heading">
+				<h3>关注我们</h3>
+			</div>
+			<div class="touch-bottom">
+				<p>1111111111111111</p>
+				<h6 >1 234 567 9871 , 800-2345-679</h6>
+				<p>1111111111</p>
+				<ul>
+					<li><a href="#"><span class="fb"> </span></a></li>
+					<li><a href="#"><span class="twit"> </span></a></li>
+					<li><a href="#"><span class="google"> </span></a></li>
+				</ul>
+			</div>
+			<div class="footer-top">
+				<p class="footer-class">Design by us  </p>
+			</div>
+		</div>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>
+	<!--end-footer-->
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

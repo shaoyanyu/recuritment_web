@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>处理职位</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/dataTable.css" media="screen">
+<!-- jQuery (necessary JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+
+
+<!-- Custom Theme files -->
+<link href="css/dashboard.css" rel="stylesheet">
+<link href="css/style2.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">
+	
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+<!--start-smoth-scrolling-->
+
+
+<!-- start menu -->
+
+<style type="text/css">
+#tit {
+	text-align: center;
+	margin: 15px;
+}
+
+#title {
+	font-size: 1.5em;
+	border: thin solid blue;
+	margin: 5px;
+	box-sizing: border-box;
+}
+
+.list {
+	display: block; border-bottom : 2px dashed #999;
+	margin: 10px;
+	padding: 5px;
+	min-width: 300px;
+	overflow-x: auto;
+	border-bottom: 2px dashed #999;
+}
+
+.listSpan {
+	display: inline-block;
+	margin-right: 25px;
+	border-right: 2px dashed #999;
+	padding-right: 10px;
+	min-width: 180px;
+}
+</style>
+</head>
+<body>
+	<div class="header" id="home">
+		<div class="container">
+			<div class="head">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="navigation">
+					<span class="menu"></span>
+					<ul class="navig">
+						<li><a href="index.html" class="hvr-bounce-to-bottom">登录</a></li>
+						<li><a href="profile.html"
+							class="active hvr-bounce-to-bottom">个人信息</a></li>
+						<li><a href="recuitFile3.html" class="hvr-bounce-to-bottom">职位列表</a></li>
+						<li><a href="contact.html" class="hvr-bounce-to-bottom">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("span.menu").click(function() {
+			$(" ul.navig").slideToggle("slow", function() {
+			});
+		});
+	</script>
+	<h2 id="tit">
+		<span id="title"></span>所有应聘者
+	</h2>
+	<div class="company" id="elist"></div>
+
+
+	<script type="text/javascript" src="js/Common.js"></script>
+	<script type="text/javascript">
+		var eState, facetestTime, sCollege, sGrade, sMajor, sName, sSex, sTel, selfIntro, uId, writetestTime;
+		var elist = document.getElementById("elist")
+		var elistId = localStorage.elistId;
+		var refuse = false;
+
+		console.log(localStorage.elistId)
+
+		$("#title").html(localStorage.title);
+		$(document).ready(updateList());
+
+		function updateList() {
+
+			refuse = false;
+
+			elist.innerHTML = "";
+			var ob = {};
+			ob.elistId = localStorage.elistId;
+
+			ajax("POST", "eperstu.alrApply.do", ob, function(data) {
+				console.log(data);
+				var data = JSON.parse(data);
+				eState = data.eState;
+				facetestTime = data.facetestTime;
+				sCollege = data.sCollege;
+				sMajor = data.sMajor;
+				sName = data.sName;
+				sSex = data.sSex;
+				sTel = data.sTel;
+				selfIntro = data.selfIntro;
+				uId = data.uId;
+				writetestTime = data.writetestTime;
+
+				for (var i = 0; i < uId.length; i++) {
+					createList(i);
+				}
+			}, function() {
+				showMessage("提交失败");
+			});
+		}
+		function createList(i) {
+			var div = document.createElement("div"), name = document
+					.createElement("span");
+			elist.appendChild(div);
+			div.className = "list";
+			name.innerHTML = "" + sName[i];
+			name.className = "listSpan";
+			div.appendChild(name);
+
+			var state = document.createElement("span");
+			state.className = "listSpan";
+			div.appendChild(state);
+
+			var deal = document.createElement("span");
+			//deal.className = "listSpan";
+			div.appendChild(deal);
+
+			var buttonS = document.createElement("button");
+			buttonS.className = "btn btn-success";
+
+			buttonS.style.marginRight = "10px";
+			buttonS.style.padding = "3px";
+
+			var buttonR = document.createElement("button");
+			buttonR.className = "btn btn-primary";
+			buttonR.innerHTML = "回拒";
+			buttonR.style.marginRight = "10px";
+			buttonR.style.padding = "3px";
+			buttonR.onclick = function() {
+				refuse = true;
+				dealClick();
+			}
+
+			var input = document.createElement("input");
+			input.type = "text";
+			input.style.width = "150px";
+			input.style.marginRight = "10px";
+
+			switch (eState[i]) {
+			case 0:
+				state.innerHTML = "当前状态：获取失败";
+				break;
+			case 1:
+				buttonS.innerHTML = "安排笔试";
+				div.appendChild(deal);
+				state.innerHTML = "当前状态：未处理";
+				deal.appendChild(input);
+				deal.appendChild(buttonS);
+				deal.appendChild(buttonR);
+				buttonS.onclick = dealClick;
+				break;
+			case 2:
+				state.innerHTML = "当前状态：已回拒";
+				break;
+			case 3:
+				state.innerHTML = "当前状态：笔试";
+				div.appendChild(deal);
+				buttonS.innerHTML = "安排面试";
+				deal.appendChild(input);
+				deal.appendChild(buttonS);
+				deal.appendChild(buttonR);
+				buttonS.onclick = dealClick;
+				break;
+			case 4:
+				state.innerHTML = "当前状态：面试";
+				div.appendChild(deal);
+				buttonS.innerHTML = "录用";
+				deal.appendChild(buttonS);
+				deal.appendChild(buttonR);
+				buttonS.onclick = dealClick;
+				break;
+			case 5:
+				state.innerHTML = "当前状态：已录用";
+				break;
+			}
+
+			function dealClick() {
+
+				if (!input.value && eState[i] !== 4 && !refuse) {
+
+					showMessage("请输入必要信息");
+					return;
+				}
+				var ob = {};
+
+				ob.elistId = elistId;
+				ob.uId = uId[i];
+				ob.eState = eState[i];
+				ob.facetestTime = facetestTime[i];
+				ob.writetestTime = writetestTime[i];
+
+				switch (eState[i]) {
+				case 1:
+					ob.eState = 3;
+					ob.writetestTime = input.value;
+					break;
+				case 3:
+					ob.eState = 4;
+					ob.facetestTime = input.value;
+					break;
+				case 4:
+					ob.eState = 5;
+					break;
+				}
+
+				if (refuse) {
+					ob.eState = 2;
+				}
+
+				console.log(ob);
+				ajax("POST", "eperstu.update.do", ob, function(data) {
+
+					var data = JSON.parse(data);
+					if (data.judge) {
+						updateList();
+
+					}
+
+				}, function() {
+					showMessage("提交失败");
+				});
+
+			}
+
+		}
+	</script>
+
+
+
+
+</body>
+</html>

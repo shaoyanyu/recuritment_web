@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>recuitFile</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+ <link href="css/dashboard.css" rel="stylesheet">
+<link href="css/style2.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<!--start-smoth-scrolling-->
+
+
+<!-- start menu -->
+  
+</head>
+<body>
+	<div class="header" id="home">
+			<div class="container">
+				<div class="head">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="navigation">
+					 <span class="menu"></span> 
+						<ul class="navig">
+							<li><a href="index.html"  class="hvr-bounce-to-bottom">Home</a></li>
+							<li><a href="recuitFile.html" class="active hvr-bounce-to-bottom">招聘者个人信息</a></li>
+							<li><a href="#" class="hvr-bounce-to-bottom">#</a></li>
+							<li><a href="#" class="hvr-bounce-to-bottom">#</a></li>
+							<li><a href="contact.html" class="hvr-bounce-to-bottom">contact</a></li>
+						</ul>
+				</div>
+					<div class="clearfix"></div>
+				</div>
+				</div>
+			</div>	
+		   <script>
+				$("span.menu").click(function(){
+					$(" ul.navig").slideToggle("slow" , function(){
+					});
+				});
+			</script>
+
+
+
+
+
+
+
+<!-- header -->
+<div class="col-sm-3 col-md-2 sidebar">
+		 <div class="sidebar_top">
+			 <h1>用户信息</h1> 
+			 <img src="images/avt.png" alt=""/>
+		 </div>
+		<div class="details">
+			 <h3>电话号码</h3>
+			 <p>123456677</p>  	 
+			 <h3>电子邮箱</h3>
+			 <p><a href="#">dddd@qq.com</a></p>
+			 <address>
+			 <h3>地址</h3>
+			 <span>天津大学</span> 
+			 </address>		 
+		</div>
+		<div class="clearfix"></div>
+</div>
+<!---->
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+	<!---//pop-up-box---->			
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	 <div class="content">
+		 <div class="details_header">
+			 <ul>
+				 <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>详细信息</a></li>
+				 <li><a href="#"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>打印</a></li>
+				 <li><a href="contact.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>联系我们</a></li>
+				 <div id="small-dialog" class="mfp-hide">
+					 <img src="images/g4.jpg" alt=""/>
+				 </div>
+				 <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>
+			 </ul>
+		 </div>
+		 <div class="company">
+			 <h3 class="clr1">已发布招聘信息</h3>
+			 <div class="company_details">
+				 <p class="cmpny1">招聘信息1</p>
+			 </div>
+			 <div class="company_details">
+				 <p class="cmpny1">招聘信息2</p>
+			 </div>
+		 </div>
+		 <div class="skills">
+			 <h3 class="clr2">发布新招聘信息</h3>
+			 <div class="skill_info">
+			 <p>xxxxxxxxxxxxxxx</p>
+			 </div>
+			
+		 </div>
+	
+		 
+	 </div>
+</div>
+<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!---->
+
+
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>学生主页</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/dashboard.css" rel="stylesheet">
+<link href="css/style2.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">
+
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+<!--end-smoth-scrolling-->
+<style>
+#win {
+position: fixed;
+	top: 200px;
+	left: 200px;
+	width: 50%;
+	min-width:300px;
+	height: 400px;
+	background: #fff;
+	border: 4px solid #f90;
+	margin: -102px 0 0 -202px;
+	display: none;
+}
+
+h2 {
+	font-size: 20px;
+	text-align: right;
+	background: #FC0;
+	border-bottom: 3px solid #f90;
+	padding: 5px;
+}
+
+h2 span {
+	color: #f90;
+	cursor: pointer;
+	background: #fff;
+	border: 1px solid #f90;
+	padding: 0 2px;
+}
+
+h3,h4 {
+	margin-top: 10px;
+}
+
+#close {
+	padding: 0 6px;
+}
+
+.resume {
+	border: 2px dashed #999;
+	min-height: 100px;
+	padding: 10px;
+}
+
+.list {
+	border-bottom: 2px dashed #999;
+	margin: 10px;
+	padding: 5px;
+	overflow-x: auto;
+}
+
+.listSpan {
+	margin-right: 25px;
+	border-right: 2px dashed #999;
+	padding-right: 10px;
+}
+</style>
+
+
+
+
+<!-- start menu -->
+
+</head>
+<body>
+	<div class="header" id="home">
+		<div class="container">
+			<div class="head">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="navigation">
+					<span class="menu"></span>
+					<ul class="navig">
+						<li><a href="index.html" class="hvr-bounce-to-bottom">登录</a></li>
+						<li><a href="profile.html"
+							class="active hvr-bounce-to-bottom">个人信息</a></li>
+						<li><a href="recuitFile3.html" class="hvr-bounce-to-bottom">职位列表</a></li>
+						<li><a href="contact.html" class="hvr-bounce-to-bottom">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("span.menu").click(function() {
+			$(" ul.navig").slideToggle("slow", function() {
+			});
+		});
+	</script>
+
+
+
+	<!-- header -->
+	<div class="col-sm-3 col-md-2 sidebar">
+		<div class="sidebar_top">
+			<h1 id="sName">wwq</h1>
+			<img src="images/avt.png" alt="" />
+		</div>
+		<div class="details">
+			<h3 id="sTel" contenteditable="true">123456677</h3>
+			<h3 id="sSex">男</h3>
+			<h3 id="sCollege" contenteditable="true">学院</h3>
+			<h3 id="sMajor" contenteditable="true">专业</h3>
+			<h4 style="color: grey">自我介绍</h4>
+			<p id="selfIntro" contenteditable="true">3ererer3</p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!---->
+	<link href="css/popuo-box.css" rel="stylesheet" type="text/css"
+		media="all" />
+	<!-- <script src="js/jquery.magnific-popup.js" type="text/javascript"></script> -->
+	<!---//pop-up-box---->
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="content">
+			<div class="company">
+				<h3 class="clr1">投递状态</h3>
+				<div class="company" id="elist"></div>
+
+				<div id="win">
+					<h2 id="closeScroll">
+						<span id="close">x</span>
+					</h2>
+					<h2 id="popTitle">1515</h2>
+					<h4 id="popContent"></h4>
+				</div>
+
+				<div class="ownmessage">
+					<h3 class="clr2">个人信息</h3>
+					<p id="personalInform" class="resume">个人信息</p>
+				</div>
+
+				<div class="ownmessage">
+					<h3 class="clr3">专业技能</h3>
+					<p id="majorSkill" class="resume">专业技能</p>
+				</div>
+				<div class="ownmessage">
+					<h3 class="clr4">教育经历</h3>
+					<p id="eduExperience" class="resume">教育经历</p>
+				</div>
+				<div class="ownmessage">
+					<h3 class="clr5">个人经历</h3>
+					<p id="personalExp" class="resume">个人经验</p>
+				</div>
+				<button type="button" class="btn btn-primary" id="modify">修改</button>
+				<button type="button" class="btn btn-success" id="modiSubmit">提交</button>
+
+			</div>
+		</div>
+		<a href="#home" id="toTop" class="scroll" style="display: block;">
+			<span id="toTopHover" style="opacity: 1;"> </span>
+		</a>
+
+		<script type="text/javascript" src="js/Common.js"></script>
+
+		<script>
+			var oClose = document.getElementById("close");
+			var oWin = document.getElementById("win");
+			var elist = document.getElementById("elist"), title, elistId;
+
+			$(updateList());
+
+			function updateList() {
+				elist.innerHTML = "";
+				ajax("POST", "student.resumeState.do", {}, function(data) {
+					//console.log(data);
+					var data = JSON.parse(data);
+
+					for ( var state in data) {
+						console.log(data[state]);
+						createList(data[state]);
+					}
+				});
+			}
+
+			function createList(ob) {
+
+				var p = document.createElement("p");
+				var button = document.createElement("button");
+				button.className = "btn btn-success";
+				button.innerHTML = "取消投递该职位";
+				button.style.marginRight = "10px";
+				button.style.padding = "3px";
+
+				button.onclick = function() {
+					if (confirm("是否确认")) {
+						ajax("POST", "student.cancel.do", {
+							elistId : ob.elistId
+						}, function(data) {
+							console.log(data);
+							var data = JSON.parse(data);
+							if (data.judge === "delete succeed") {
+								showMessage("删除成功", function() {
+									updateList();
+								});
+							} else {
+								showMessage("删除失败，请重试");
+							}
+						});
+					}
+				};
+				p.appendChild(button);
+				var span = document.createElement("span");
+				span.innerHTML = ob.eTitle;
+				span.className = "listSpan"
+				p.appendChild(span);
+
+				dealState(ob, p);
+
+				p.className = "list";
+
+				elist.appendChild(p);
+			}
+			function dealState(ob, p) {
+				var span = document.createElement("span");
+				span.className = "listSpan"
+				p.appendChild(span);
+
+				var time = document.createElement("span");
+
+				time.innerHTML = "";
+				p.appendChild(time);
+
+				switch (ob.eState) {
+				case 0:
+					span.innerHTML = "查询状态失败";
+					break;
+				case 1:
+					span.innerHTML = "状态：已投递";
+					break;
+				case 2:
+					span.innerHTML = "状态：已回拒";
+					break;
+				case 3:
+					span.innerHTML = "状态：笔试";
+					time.className = "listSpan";
+					time.innerHTML = "笔试截止时间：" + ob.writetestTime;
+					break;
+				case 4:
+					span.innerHTML = "状态：面试";
+					time.className = "listSpan";
+					time.innerHTML = "面试时间" + ob.facetestTime;
+					break;
+				case 5:
+					span.innerHTML = "状态：已录用";
+					break;
+				//TODO
+
+				}
+
+			}
+
+			/* 	//提交个人信息
+			 function submitMessage(id) {
+
+			 var idName = "#" + id;
+
+			 var element = $(idName), elementBuffer;
+
+			 element.focus(function() {
+			 eAccountBuffer = element.html();
+			 })
+			 element.blur(function() {
+
+			 if (eAccountBuffer !== element.html()) {
+
+			 var ob = {};
+			 ob[id] = element.html();
+			 console.log(ob);
+			 }
+			 });
+			 } */
+
+			/* submitMessage("eAccount");
+			submitMessage("eName");
+			submitMessage("eTel");
+			submitMessage("eIntro"); */
+
+			oClose.onclick = function() {
+				$("#popContent").html("");
+				oWin.style.display = "none";
+				$("#popTitle").attr("contenteditable", "false");
+				$("#popContent").attr("contenteditable", "false");
+				$("#popTitle").css("border", "solid 0px grey");
+				$("#popContent").css("border", "solid 0px grey");
+			}
+
+			function ajax(type, url, data, suc, fail) {
+				$.ajax({
+					type : type,
+					url : url,
+					data : data,
+					dataType : "text",
+					success : suc,
+					error : fail
+				});
+			}
+
+			//$(document).ready(updateList());
+
+			//个人信息获取和修改
+			(function() {
+
+				$(document).ready(updateInformation());
+
+				function updateInformation() {
+					ajax("POST", "student.information.do", {}, function(data) {
+						console.log(data);
+						var data = JSON.parse(data);
+
+						var student = data.student;
+						var resume = data.resume;
+
+						setInformation("personalInform", resume);
+						setInformation("majorSkill", resume);
+						setInformation("eduExperience", resume);
+						setInformation("personalExp", resume);
+
+						setInformation("sName", student);
+						setInformation("sTel", student);
+						setInformation("sSex", student);
+						setInformation("sCollege", student);
+						setInformation("sMajor", student);
+						setInformation("selfIntro", student);
+					});
+				}
+
+				function submitMessage(id) {
+
+					var idName = "#" + id;
+
+					var element = $(idName), elementBuffer;
+
+					element.focus(function() {
+						eAccountBuffer = element.html();
+					})
+					element.blur(function() {
+
+						if (eAccountBuffer !== element.html()) {
+
+							var ob = {};
+							ob[id] = element.html();
+							console.log(ob);
+							//succ or fail
+							updateInformation();
+						}
+					});
+				}
+
+				$("#modify").click(function() {
+					$("#personalInform").attr("contenteditable", "true");
+					$("#majorSkill").attr("contenteditable", "true");
+					$("#eduExperience").attr("contenteditable", "true");
+					$("#personalExp").attr("contenteditable", "true");
+					$("#personalInform").css("border", "2px solid blue");
+					$("#majorSkill").css("border", "2px solid blue");
+					$("#eduExperience").css("border", "2px solid blue");
+					$("#personalExp").css("border", "2px solid blue");
+				});
+
+				//提交简历
+				$("#modiSubmit")
+						.click(
+								function() {
+									if ($("#personalInform").attr(
+											"contenteditable") !== "true") {
+										showMessage("请先修改");
+										return;
+									}
+									var ob = {};
+									ob.personalInform = $("#personalInform")
+											.html();
+									ob.majorSkill = $("#majorSkill").html();
+									ob.eduExperience = $("#eduExperience")
+											.html();
+									ob.personalExp = $("#personalExp").html();
+									console.log($("#personalExp").html());
+									ajax("POST", "student.resumeChange.do", ob,
+											function(data) {
+												updateInformation();
+												showMessage("修改成功");
+											});
+									//suc
+									$("#personalInform").attr(
+											"contenteditable", "false");
+									$("#majorSkill").attr("contenteditable",
+											"false");
+									$("#eduExperience").attr("contenteditable",
+											"false");
+									$("#personalExp").attr("contenteditable",
+											"false");
+									$("#personalInform").css("border",
+											"2px dashed #999");
+									$("#majorSkill").css("border",
+											"2px dashed #999");
+									$("#eduExperience").css("border",
+											"2px dashed #999");
+									$("#personalExp").css("border",
+											"2px dashed #999");
+								});
+
+				submitMessage("sMajor");
+				submitMessage("sCollege");
+				submitMessage("sGrade");
+				submitMessage("sTel");
+				submitMessage("selfIntro");
+			})();
+		</script>
+</body>
+</html>

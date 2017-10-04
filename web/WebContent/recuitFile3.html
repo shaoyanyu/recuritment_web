@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>recuitFile</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/dataTable.css" media="screen">
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/dashboard.css" rel="stylesheet">
+<link href="css/style2.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">
+		
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+<style type="text/css">
+#win {
+	position: fixed;
+	top: 200px;
+	left: 200px;
+	width: 50%;
+	min-width:300px;
+	height: 400px;
+	background: #fff;
+	border: 4px solid #f90;
+	margin: -102px 0 0 -202px;
+	display: none;
+}
+
+#closeScroll {
+	font-size: 20px;
+	text-align: right;
+	background: #FC0;
+	border-bottom: 3px solid #f90;
+	padding: 5px;
+}
+
+#close {
+	color: #f90;
+	cursor: pointer;
+	background: #fff;
+	border: 1px solid #f90;
+	padding: 0 2px;
+	padding: 0 6px;
+}
+
+.border {
+	border-bottom: 3px dashed grey;
+	margin: 10px;
+	padding: 10px;
+	max-height: 150px;
+	overflow-y: auto;
+}
+</style>
+</head>
+<body>
+	<div class="header" id="home">
+		<div class="container">
+			<div class="head">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="navigation">
+					<span class="menu"></span>
+					<ul class="navig">
+						<li><a href="index.html" class="hvr-bounce-to-bottom">登录</a></li>
+						<li><a href="profile.html" class=" hvr-bounce-to-bottom">个人信息</a></li>
+						<li><a href="recuitFile3.html"
+							class="active hvr-bounce-to-bottom">职位列表</a></li>
+						<li><a href="contact.html" class="hvr-bounce-to-bottom">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<h1>发布信息列表</h1>
+
+	<div id="elist"></div>
+
+	<div id="win">
+		<h2 id="closeScroll">
+			<span id="close">x</span>
+		</h2>
+		<button type="button" class="btn btn-primary" id="apply">投递职位</button>
+		<h2 id="popTitle" class="border"></h2>
+		<p class="border">
+			需求人数： <span id="ePersonNum"></span>
+		</p>
+		<p class="border">
+			职位类型： <span id="eClass"></span>
+		</p>
+		<p id="popContent" class="border"></p>
+	</div>
+
+	<a href="#home" id="toTop" class="scroll" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+	<script type="text/javascript" src="js/Common.js"></script>
+	<script>
+		var elist = document.getElementById("elist"), eClass, eId, eListIntro, ePersonNum, eTitle, elistId;
+		var data = {};
+		var oClose = document.getElementById("close");
+		var oWin = document.getElementById("win");
+		var currentListId;
+
+		$(document).ready(updateList());
+
+		function updateList() {
+			elist.innerHTML = "";
+			ajax("POST", "elist.getAll.do", {}, function(data) {
+				console.log(data);
+
+				data = JSON.parse(data);
+
+				eClass = data.eClass;
+				eId = data.eId;
+				eListIntro = data.eListIntro;
+				ePersonNum = data.ePersonNum;
+				eTitle = data.eTitle;
+				elistId = data.elistId;
+
+				for (var i = 0; i < eTitle.length; i++) {
+					createList(i);
+				}
+			}, function() {
+				showMessage("请求失败");
+			});
+		}
+		function createList(i) {
+			var div = document.createElement("div"), p = document
+					.createElement("p");
+
+			p.innerHTML = "" + eTitle[i];
+
+			p.className = "cmpny1";
+			div.className = "company_details";
+			div.appendChild(p);
+
+			//点击标题弹出详情
+			div.onclick = function() {
+				oWin.style.display = "block";
+				$("#popTitle").html(eTitle[i]);
+				$("#ePersonNum").html(ePersonNum[i]);
+				$("#popContent").html(eListIntro[i]);
+				$("#eClass").html(eClass[i]);
+
+				currentListId = elistId[i];
+
+			}
+
+			elist.appendChild(div);
+		}
+
+		oClose.onclick = function() {
+			$("#popContent").html("");
+			oWin.style.display = "none";
+		}
+		//申请职位
+		$("#apply").click(function() {
+			console.log(currentListId);
+			ajax("POST", "student.sendresume.do", {
+				elistId : currentListId
+			}, function(data) {
+
+				data = JSON.parse(data);
+				switch (data.judge) {
+				case "send succeed":
+					showMessage("投递成功", function() {
+						window.location.href = "profile.html";
+					});
+					break;
+				case "false":
+					showMessage("不能重复投递");
+					break;
+				case "student not login":
+					showMessage("请先以学生身份登录");
+				}
+
+			}, function() {
+				showMessage("请求失败");
+			});
+		});
+
+		$("span.menu").click(function() {
+			$(" ul.navig").slideToggle("slow", function() {
+			});
+		});
+	</script>
+
+</body>
+</html>

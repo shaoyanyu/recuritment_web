@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HomePage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+
+
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script src="js/jquery.min.js"></script>
+
+<STYLE type=text/css>
+
+#tags { PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; WIDTH: 400px; PADDING-TOP: 0px; HEIGHT: 23px }
+#tags LI { BACKGROUND: url(images/tagleft.gif) no-repeat left bottom; FLOAT: left; MARGIN-RIGHT: 1px; LIST-STYLE-TYPE: none; HEIGHT: 23px }
+#tags LI A { PADDING-RIGHT: 10px; PADDING-LEFT: 10px;   FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #999; LINE-HEIGHT: 23px; PADDING-TOP: 0px; HEIGHT: 23px; TEXT-DECORATION: none }
+
+</STYLE>
+
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+
+
+<!--start-smoth-scrolling-->
+</head>
+<body>
+	<!--start-header-->
+	<div class="header" id="home">
+		<div class="container">
+			<div class="head">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="navigation">
+					<span class="menu"></span>
+					<ul class="navig">
+						<li><a href="index.html" class="active hvr-bounce-to-bottom">登录</a></li>
+						<li><a href="profile.html" class="hvr-bounce-to-bottom">个人信息</a></li>
+						<li><a href="recuitFile3.html" class="hvr-bounce-to-bottom">职位列表</a></li>
+						<li><a href="contact.html" class="hvr-bounce-to-bottom">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- script-for-menu -->
+	<!-- script-for-menu -->
+	<script>
+		$("span.menu").click(function() {
+			$(" ul.navig").slideToggle("slow", function() {
+			});
+		});
+	</script>
+	<!-- script-for-menu -->
+	<!--start-banner-->
+	<div class="banner">
+		<div class="container">
+			<div id=con>
+
+
+				<DIV id=tagContent>
+
+					<DIV class=tagContent id=tagContent0>
+						<div class="banner-top">
+							<div class="banner-bottom">
+								<UL id=tags>
+									<LI><A onClick="selectTag('tagContent0',this)"
+										href="javascript:void(0)">用户注册</A></LI>
+									<LI class=selectTag><A onClick="selectTag('tagContent1',this)"
+										href="javascript:void(0)">用户登录</A></LI>
+								</UL>
+								<div class="bnr-one">
+									<div class="bnr-left">
+										<p>身份</p>
+									</div>
+									<div class="bnr-right">
+										<select id=select0>
+											<option value="student">学生</option>
+											<option value="teacher">招聘者</option>
+										</select>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one" id="change0">
+									<div class="bnr-left">
+										<p>姓名</p>
+									</div>
+									<div class="bnr-right">
+										<input type="text" id="sRName" class="text" value=""
+											onfocus="this.value = '';"
+											onblur="if (this.value == '') {this.value = '';}">
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one" id="change1">
+									<div class="bnr-left">
+										<p>学号</p>
+									</div>
+									<div class="bnr-right">
+										<input type="text" id="sRId" class="text" value=""
+											onfocus="this.value = '';">
+										<div id="occupied">该账号已经被占用</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one">
+									<div class="bnr-left">
+										<p>密码</p>
+									</div>
+									<div class="bnr-right">
+										<input  type="password" id="sRPwd"   value=""
+											onfocus="this.value = '';"
+											onblur="if (this.value == '') {this.value = '';}">
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one">
+									<div class="bnr-left">
+										<p>验证密码</p>
+									</div>
+									<div class="bnr-right">
+										<input type="password" id="sRPwd2" class="text" value=""
+											onfocus="this.value = '';" >
+											<div id="diff">两次输入密码不一致</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one" id=change2>
+									<div class="bnr-left">
+										<p>学院</p>
+									</div>
+									<div class="bnr-right">
+										<input type="text" id="sRCollege" class="text" value=""
+											onfocus="this.value = '';"
+											onblur="if (this.value == '') {this.value = '';}">
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one" id=change3>
+									<div class="bnr-left">
+										<p>专业</p>
+									</div>
+									<div class="bnr-right">
+										<input type="text" id="sRMajor" class="text" value=""
+											onfocus="this.value = '';"
+											onblur="if (this.value == '') {this.value = '';}">
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<br>
+								<div class=hidepart>
+									<div class="bnr-one">
+										<div class="bnr-left">
+											<p>年级</p>
+										</div>
+										<div class="bnr-right">
+											<input type="text" id="sRGrade" class="text" value=""
+												onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = '';}">
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="bnr-one">
+										<div class="bnr-left">
+											<p>性别</p>
+										</div>
+										<div class="bnr-right">
+											<select id="sRSex">
+												<option value="男">男</option>
+												<option value="女">女</option>
+											</select>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="bnr-one">
+										 
+
+										
+										<div class="clearfix"></div>
+									</div>
+									<div class="bnr-one">
+										<div class="bnr-left">
+											<p>联系方式</p>
+										</div>
+										<div class="bnr-right">
+											<input type="text" id="sRTel" class="text" value=""
+												onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = '';}">
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="bnr-one">
+										<div class="bnr-left">
+											<p>自我介绍（可选）</p>
+										</div>
+										<div class="bnr-right">
+											<input type="text" id="sRSelfIntro" class="text" value=""
+												onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = '';}">
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="bnr-btn">
+									<form style = "display:inline">
+										<input type="submit" value="注册" id="register">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<DIV class="tagContent selectTag" id=tagContent1>
+						<div class="banner-top">
+							<div class="banner-bottom">
+								<UL id=tags>
+									<LI><A onClick="selectTag('tagContent0',this)"
+										href="javascript:void(0)">用户注册</A></LI>
+									<LI class=selectTag><A
+										onClick="selectTag('tagContent1',this)"
+										href="javascript:void(0)">用户登录</A></LI>
+								</UL>
+								<div class="bnr-one">
+									<div class="bnr-left">
+										<p>身份</p>
+									</div>
+									<div class="bnr-right">
+										<select id=select1>
+											<option value="student">学生</option>
+											<option value="teacher">招聘者</option>
+										</select>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one">
+									<div class="bnr-left" id="fix1">
+										<p>学号</p>
+									</div>
+									<div class="bnr-right">
+										<input type="text" id="sId" class="text" value=""
+											onfocus="this.value = '';"
+											onblur="if (this.value == '') {this.value = '';}">
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-one">
+									<div class="bnr-left">
+										<p>密码</p>
+									</div>
+									<div class="bnr-right">
+										<input id="sPwd" type="password" class="text" value=""
+											onfocus="this.value = '';"
+											onblur="if (this.value == '') {this.value = '';}">
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="bnr-btn">
+									<form>
+										<input type="submit" value="登录" id="login">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--end-banner-->
+	<!--start-footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="touch-top heading">
+				<h3 >请关注我们</h3>
+			</div>
+			<div class="touch-bottom">
+				<div class=hidepart2>
+					<div id="ttt0">用户名</div>
+					<div id="ttt1">学号</div>
+					<div id="ttt">账号</div>
+					<div id="ttt2">简介</div>
+					<div id="ttt3">联系方式</div>
+					<div id="ttt4">姓名</div>
+					<div id='ttt5'>学院</div>
+					<div id="ttt6">专业</div>
+				</div>
+				<ul>
+					<li><a href="#"><span class="fb"> </span></a></li>
+					<li><a href="#"><span class="twit"> </span></a></li>
+					<li><a href="#"><span class="google"> </span></a></li>
+				</ul>
+			</div>
+			<div class="footer-top">
+				<p class="footer-class">Design by us</p>
+			</div>
+		</div>
+		<a href="#home" id="toTop" class="scroll" style="display: block;">
+			<span id="toTopHover" style="opacity: 1;"> </span>
+		</a>
+	</div>
+	<!--end-footer-->
+<script type="text/javascript"	src="js/Common.js"></script>
+	<script type="text/javascript">
+	
+	
+	var chooseStudent = true,
+	occupied = $("#occupied"), 
+	RId = $("#sRId"),
+	RPwd = $("#sRPwd"),
+	RPwd2 = $("#sRPwd2"),
+	pwdDiff = false,
+ 	beOccupied = false;
+
+		occupied.css("display", 'none');
+		$("#diff").css("display", 'none');
+		
+		$("#select1").change(function() {
+			var text = $('#select1 option:selected').text();
+			var text1 = $('#ttt1').text();
+			if (text.length == 3) {
+				chooseStudent = false;
+
+				var text2 = $('#ttt').text();
+				$('#fix1 p').html(text2);
+
+			} else {
+				chooseStudent = true;
+
+				$('#fix1 p').html(text1);
+			}
+		});
+		$('#tagContent0').hide();
+		$('.hidepart2').hide();
+
+		$("#select0").change(function() {
+			var text = $('#select0 option:selected').text();
+
+			if (text.length == 3) {
+				chooseStudent = false;
+				//var test1 = $('#change0 p').text();
+				var string0 = $('#ttt0').text();
+				$('#change0 p').html(string0);
+
+				var string = $('#ttt').text();
+				$('#change1 p').html(string);
+
+				var string2 = $('#ttt2').text();
+				$('#change2 p').html(string2);
+
+				var string3 = $('#ttt3').text();
+				$('#change3 p').html(string3);
+
+				$('.hidepart').hide();
+
+			} else {
+				chooseStudent = true;
+				var string4 = $('#ttt4').text();
+				$('#change0 p').html(string4);
+
+				var string5 = $('#ttt1').text();
+				$('#change1 p').html(string5);
+
+				var string6 = $('#ttt5').text();
+				$('#change2 p').html(string6);
+
+				var string7 = $('#ttt6').text();
+				$('#change3 p').html(string7);
+
+				$('.hidepart').show();
+			}
+		});
+
+		//切换注册和登录
+		function selectTag(showContent, selfObj) {
+			chooseStudent = true;
+			// 操作标签
+			var tag = document.getElementById("tags")
+					.getElementsByTagName("li");
+			var taglength = tag.length;
+			for (i = 0; i < taglength; i++) {
+				tag[i].className = "";
+			}
+			selfObj.parentNode.className = "selectTag";
+			// 操作内容
+			for (i = 0; j = document.getElementById("tagContent" + i); i++) {
+				j.style.display = "none";
+			}
+			document.getElementById(showContent).style.display = "block";
+
+			 if(showContent ==='tagContent0'){
+			 	 console.log('zc');
+			 }
+			 else{
+				 console.log('dl');
+			 }
+
+		}
+		function ajax(type, url, data, suc, fail) {
+			$.ajax({
+				type : type,
+				url : url,
+				data : data,
+				dataType : "text",
+				success : suc,
+				error : fail
+			});
+		}
+		RPwd.blur(function  (argument) {
+			
+			if (this.value == '') {
+				this.value = '';
+			}
+			if(this.value!== $('#sRPwd2').val() && $('#sRPwd2').val()!=''){
+				$("#diff").css("display", 'block');
+				pwdDiff = true;
+				console.log(this.value+"  "+ $('#sRPwd').val())
+			}
+			else {
+				pwdDiff = false;
+				$("#diff").css("display", 'none');
+			}
+		});
+
+		RPwd2.blur(function  (argument) {
+			
+			if (this.value == '') {
+				this.value = '';
+			}
+			if(this.value!== $('#sRPwd').val()){
+				$("#diff").css("display", 'block');
+				pwdDiff = true;
+				console.log(this.value+"  "+ $('#sRPwd').val())
+			}
+			else{
+				pwdDiff = false;
+				$("#diff").css("display", 'none');
+			}
+		});
+		
+		
+		RId.blur(function(argument) {
+			if (this.value == '') {
+				this.value = '';
+			}
+			
+			occupied.css("display", 'none');
+			beOccupied = false;
+			
+			if(!$('#sRId').val()){
+				return;
+			}
+			if (chooseStudent) {
+				var ob = {
+					sId : $('#sRId').val()
+				}
+		
+
+				ajax("POST", "student.check.do", ob, function(msg) {
+					
+					var ob = JSON.parse(msg);
+					console.log(ob.judge);
+					
+					if(!ob.judge){	//账号被占用
+						
+						occupied.css("display", 'block');
+						beOccupied = true;
+					}
+					else {
+						beOccupied = false;
+					}
+				});
+
+			} else {
+				var ob = {
+					eAccount : $('#sRId').val()
+				}
+				
+				ajax("POST", "employee.judge.do", ob, function(msg) {
+					
+					var ob = JSON.parse(msg);
+					if(!ob.judge){	//账号被占用
+						occupied.css("display", 'block');
+						beOccupied = true;
+					}
+					else {
+						beOccupied = false;
+					}
+					
+				});
+			}
+		});
+
+		//注册事件
+		$('#register').click(function() {
+
+			if(beOccupied  ||pwdDiff){
+				return false;
+			}
+			//beOccupied=false;
+			
+			if (chooseStudent) {
+				
+				if(!$('#sRId').val() || !$('#sRPwd').val() ||! $('#sRName').val()|| !$('#sRCollege').val()
+						|| !$('#sRMajor').val() || !$('#sRGrade').val() || !$('#sRSex').val() 
+						|| !$('#sRTel').val() ){
+					showMessage("请填入必要信息");
+					console.log("null");
+					return false;
+				}
+				 
+				
+				var ob = {
+					sId : $('#sRId').val(),
+					sPwd : $('#sRPwd').val(),
+					sName : $('#sRName').val(),
+					sCollege : $('#sRCollege').val(),
+					sMajor : $('#sRMajor').val(),
+					sGrade : $('#sRGrade').val(),
+					sSex : $('#sRSex').val(),
+					sTel : $('#sRTel').val(),
+					selfIntro : $('#sRSelfIntro').val()
+				}
+				console.log(ob);
+
+				ajax("POST", "student.register.do", ob, function(msg) {
+					var ob = JSON.parse(msg);
+					showMessage($('#sRName').val()+"：注册成功");
+					window.location.href = "index.html";
+				});
+
+			} else {
+				
+				if(!$('#sRId').val() || !$('#sRPwd').val()||! $('#sRName').val() || !$('#sRCollege').val()
+						|| !$('#sRMajor').val() ){
+					showMessage("请填入必要信息");
+					return false;
+				}
+				
+				var ob = {
+					eAccount : $('#sRId').val(),
+					ePwd : $('#sRPwd').val(),
+					eName : $('#sRName').val(),
+					eIntro : $('#sRCollege').val(),
+					eTel : $('#sRMajor').val()
+				}
+				
+				ajax("POST", "employee.register.do", ob, function(msg) {
+					var ob = JSON.parse(msg);
+					showMessage($('#sRName').val()+"：注册成功");
+					window.location.href = "index.html";
+				});
+			}
+			return false;
+		});
+		$('#login').click(function() {
+			
+			
+			var Id = $('#sId').val(),
+				Pwd = $('#sPwd').val();
+
+			if(!Id||!Pwd){
+				showMessage("请填入必要信息");
+				console.log("2");
+				return false;
+			}
+			if (chooseStudent) {
+
+				ajax("POST", "student.login.do", {
+					sId : Id,
+					sPwd : Pwd
+				}, function(msg) {
+					var ob = JSON.parse(msg);
+					if(ob.judge){
+						showMessage("登录成功",function(){
+							window.location.href = "profile.html";
+						});
+						
+					}
+					else{
+						
+						showMessage("请检查输入是否正确");
+					}
+				});
+
+			} else {
+				ajax("POST", "employee.login.do", {
+					eAccount : Id,
+					ePwd : Pwd
+				}, function(msg) {
+					console.log(msg)
+					var ob = JSON.parse(msg);
+					if(ob.judge){
+						showMessage("登录成功",function(){
+							window.location.href = "recuitFile.html";
+						});
+						
+					}
+					else{
+						showMessage("请检查输入是否正确");
+					}
+					
+				});
+			}
+			return false;
+		});
+	</script>
+
+</body>
+</html>
